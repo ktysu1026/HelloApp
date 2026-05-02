@@ -26,7 +26,7 @@ if uploaded_file is not None:
         gender_predictions = gender_classifier(image)
         
         # Sort predictions by score (highest first)
-        gender_predictions = sorted(age_predictions, key=lambda x: x['score'], reverse=True)
+        gender_predictions = sorted(gender_predictions, key=lambda x: x['score'], reverse=True)
         
         # Display results
         top_prediction = age_predictions[0]
