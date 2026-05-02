@@ -3,15 +3,15 @@ from transformers import pipeline
 from PIL import Image
 
 # Set up the app title and layout
-st.title("🎂 Age Classification using ViT")
+st.title("🎂 Gender Classification using ViT")
 st.write("Upload an image to predict the age range of the person.")
 
 # Cache the model so it doesn't reload on every interaction
 @st.cache_resource
 def load_classifier():
-    return pipeline("image-classification", model="nateraw/vit-age-classifier")
+    return pipeline("image-classification", model="syntheticbot/gender-classification-clip")
 
-age_classifier = load_classifier()
+gender_classifier = load_classifier()
 
 # File uploader for user images
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
@@ -23,10 +23,10 @@ if uploaded_file is not None:
     
     with st.spinner("Classifying..."):
         # Classify age
-        age_predictions = age_classifier(image)
+        gender_predictions = gender_classifier(image)
         
         # Sort predictions by score (highest first)
-        age_predictions = sorted(age_predictions, key=lambda x: x['score'], reverse=True)
+        gender_predictions = sorted(age_predictions, key=lambda x: x['score'], reverse=True)
         
         # Display results
         top_prediction = age_predictions[0]
@@ -35,7 +35,7 @@ if uploaded_file is not None:
         
         # Optional: Show all probabilities in a chart
         with st.expander("See detailed probabilities"):
-            labels = [p['label'] for p in age_predictions]
-            scores = [p['score'] for p in age_predictions]
+            labels = [p['label'] for p in gender_predictions]
+            scores = [p['score'] for p in gender_predictions]
             st.bar_chart(data=dict(zip(labels, scores)))
 
