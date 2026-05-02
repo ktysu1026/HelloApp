@@ -1,12 +1,24 @@
 # Import part
 import streamlit as st
+from transformers import pipeline
+from PIL import Image
 
-st.write("ISOM5240")
+# Streamlit UI
+print("Title: Age Classification using ViT")
 
-st.title("Title")
+# Load the age classification pipeline
+# The code below should be placed in the main part of the program
+age_classifier = pipeline("image-classification",
+                          model="nateraw/vit-age-classifier")
 
-st.header("Header")
+image_name = "middleagedMan.jpg"
+image_name = Image.open(image_name).convert("RGB")
 
-st.subheader("Subheader")
+# Classify age
+age_predictions = age_classifier(image_name)
+print(age_predictions)
+age_predictions = sorted(age_predictions, key=lambda x: x['score'], reverse=True)
 
-st.write("Hello, *World!* :sunglasses:")
+# Display results
+print("Predicted Age Range:")
+print(f"Age range: {age_predictions[0]['label']}")
