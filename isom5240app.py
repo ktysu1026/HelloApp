@@ -22,15 +22,15 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image", use_container_width=True)
     
     with st.spinner("Classifying..."):
-        # Classify age
+        # Classify gender
         gender_predictions = gender_classifier(image)
         
         # Sort predictions by score (highest first)
         gender_predictions = sorted(gender_predictions, key=lambda x: x['score'], reverse=True)
         
         # Display results
-        top_prediction = age_predictions[0]
-        st.success(f"**Predicted Age Range: {top_prediction['label']}**")
+        top_prediction = gender_predictions[0]
+        st.success(f"**Predicted Gender Range: {top_prediction['label']}**")
         st.write(f"Confidence Score: {top_prediction['score']:.2%}")
         
         # Optional: Show all probabilities in a chart
