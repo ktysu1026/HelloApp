@@ -38,4 +38,4 @@ if uploaded_file is not None:
             labels = [p['label'] for p in age_predictions]
             scores = [p['score'] for p in age_predictions]
             st.bar_chart(data=dict(zip(labels, scores)))
-"
+
