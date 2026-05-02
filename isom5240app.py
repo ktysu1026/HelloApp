@@ -1,7 +1,5 @@
-
 # Import part
 import streamlit as st
-from transformers import pipeline
 
 st.write("ISOM5240")
 
