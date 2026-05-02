@@ -1,3 +1,7 @@
+
+# Import part
+
+from transformers import pipeline
 import streamlit as st
 
 st.write("ISOM5240")
@@ -12,10 +16,6 @@ st.write("Hello, *World!* :sunglasses:")
 
 # Program title: Storytelling App
 
-# Import part
-import streamlit as st
-from transformers import pipeline
-
 # Function part
 def img2text(url):
     image_to_text_model = pipeline("image-to-text", model="Salesforce/blip-image-captioning-base")
@@ -25,6 +25,7 @@ def img2text(url):
 # Main part
 st.set_page_config(page_title="Story on Christmas Eve", page_icon="🎄")
 st.header("Turn Your Image to Audio Story")
+
 uploaded_file = st.file_uploader("Select an Image...")
 
 if uploaded_file is not None:
@@ -33,7 +34,7 @@ if uploaded_file is not None:
     with open(uploaded_file.name, "wb") as file:
         file.write(bytes_data)
 
-    st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
+    st.image(uploaded_file, caption="Uploaded Image", use_container_width=True)
 
     # Stage 1: Image to Text (Using the function)
     st.text('Processing img2text...')
