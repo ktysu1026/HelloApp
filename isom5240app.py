@@ -9,7 +9,7 @@ st.write("Upload an image to predict the person's gender.")
 # Cache the model so it doesn't reload on every interaction
 @st.cache_resource
 def load_classifier():
-    return pipeline("image-classification", model="syntheticbot/gender-classification-clip")
+    return pipeline("image-classification", model="prithivMLmods/MetaCLIP-2-Gender-Identifier")
 
 gender_classifier = load_classifier()
 
