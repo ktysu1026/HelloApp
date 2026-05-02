@@ -9,7 +9,7 @@ st.write("Upload an image to predict the age range of the person.")
 # Cache the model so it doesn't reload on every interaction
 @st.cache_resource
 def load_classifier():
-    return pipeline("image-classification"", model=""nateraw/vit-age-classifier")
+    return pipeline("image-classification", model="nateraw/vit-age-classifier")
 
 age_classifier = load_classifier()
 
