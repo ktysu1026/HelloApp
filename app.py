@@ -4,6 +4,7 @@ from PIL import Image
 import time
 
 # Function part
+# ... 
 def main(): 
   
     # App title
